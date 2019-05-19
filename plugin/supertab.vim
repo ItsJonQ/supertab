@@ -385,6 +385,10 @@ function! s:SetDefaultCompletionType() " {{{
 endfunction " }}}
 
 function! SuperTab(command) " {{{
+  if exists('b:SuperTabDisabled') && b:SuperTabDisabled
+    return ""
+  endif
+
   " Used to perform proper cycle navigation as the user requests the next or
   " previous entry in a completion list, and determines whether or not to simply
   " retain the normal usage of <tab> based on the cursor position.
